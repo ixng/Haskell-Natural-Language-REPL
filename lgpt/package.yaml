@@ -1,0 +1,64 @@
+name:                lgpt
+version:             0.1.0.0
+author:              "Alex Dixon"
+maintainer:          "alexander.dixon@warwick.ac.uk"
+copyright:           "2026 Alex Dixon"
+
+description:         "The Lightly Generalised Parsing Task, a chatbot that can respond to requests in the terminal. Used as coursework for CS141 Functional Programming at the University of Warwick."
+
+
+language:    GHC2021
+
+# This is the list of dependencies you should modify to add packages
+# to your application.
+dependencies:
+- base >= 4.7 && < 5
+- megaparsec
+- ansi-terminal
+- containers
+- mtl
+- time
+
+default-extensions:
+- TypeSynonymInstances
+- FlexibleInstances
+- RecordWildCards
+- LambdaCase
+
+
+library:
+  source-dirs: src
+
+executables:
+  lgpt-tui:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - lgpt
+    when:        
+    - condition: false        
+      other-modules: Paths_lgpt
+
+tests:
+  lgpt-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options: []
+    dependencies:
+    - lgpt
+    - tasty
+    - tasty-hunit
+    - tasty-quickcheck
+    - QuickCheck
+    - bytestring
+    - split
+    - temporary
+    - regex-tdfa
+    - text
+    when:        
+    - condition: false        
+      other-modules: Paths_lgpt

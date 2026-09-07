@@ -1,0 +1,10 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "lgpt:lib"
+
+    - path: "./app"
+      component: "lgpt:exe:lgpt-tui"
+
+    - path: "./test"
+      component: "lgpt:test:lgpt-test"
